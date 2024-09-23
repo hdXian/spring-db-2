@@ -11,28 +11,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest // search for @SpringBootApplication and its config (in this case, class what has @SpringBootApplication also has @ImPort(xxxConfig.class)
-class ItemRepositoryTest {
+/**
+ * V2 - use @Transactional
+ *
+ */
+
+@Transactional
+@SpringBootTest // search for @SpringBootApplication and get its config (in this case, class what has @SpringBootApplication also has @ImPort(xxxConfig.class)
+class ItemRepositoryTestV2 {
 
     @Autowired
     ItemRepository itemRepository;
 
-    @Autowired
-    PlatformTransactionManager transactionManager;
-
-    TransactionStatus status;
-
-    @BeforeEach
-    void beforeEach() {
-        // start transaction
-        status = transactionManager.getTransaction(new DefaultTransactionDefinition());
-    }
+//    @Autowired
+//    PlatformTransactionManager transactionManager;
+//
+//    TransactionStatus status;
+//
+//    @BeforeEach
+//    void beforeEach() {
+//        // start transaction
+//        status = transactionManager.getTransaction(new DefaultTransactionDefinition());
+//    }
 
     @AfterEach
     void afterEach() {
@@ -42,7 +49,7 @@ class ItemRepositoryTest {
         }
 
         // rollback transaction
-        transactionManager.rollback(status);
+//        transactionManager.rollback(status);
     }
 
     @Test
