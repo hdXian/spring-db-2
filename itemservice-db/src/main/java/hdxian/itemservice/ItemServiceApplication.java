@@ -1,11 +1,7 @@
 package hdxian.itemservice;
 
-import hdxian.itemservice.config.JdbcTemplateV1Config;
-import hdxian.itemservice.config.JdbcTemplateV2Config;
-import hdxian.itemservice.config.JdbcTemplateV3Config;
-import hdxian.itemservice.config.MemoryConfig;
+import hdxian.itemservice.config.*;
 import hdxian.itemservice.repository.ItemRepository;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +14,8 @@ import javax.sql.DataSource;
 //@Import(MemoryConfig.class)
 //@Import(JdbcTemplateV1Config.class)
 //@Import(JdbcTemplateV2Config.class)
-@Import(JdbcTemplateV3Config.class)
+//@Import(JdbcTemplateV3Config.class)
+@Import(MyBatisConfig.class)
 @SpringBootApplication(scanBasePackages = "hdxian.itemservice.web")
 public class ItemServiceApplication {
 

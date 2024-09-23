@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper>
+<mapper namespace="hdxian.itemservice.repository.mybatis.ItemMapper">
 
 <!--    인자가 Item item 하나: 프로퍼티에 item 생략 가능 (item.itemName -> itemName) -->
     <insert id="save" useGeneratedKeys="true" keyProperty="id">
@@ -13,9 +13,9 @@
 <!--    인자가 Long id, ItemUpdateDto updateParam 2개: 각 인자를 구분해야 함 -->
     <update id="update">
         update item
-        set item_name = #{updateParam.itemName}
-        set price = #{updateParam.price}
-        set quantity = #{updateParam.quantity}
+        set item_name = #{updateParam.itemName},
+            price = #{updateParam.price},
+            quantity = #{updateParam.quantity}
         where id = #{id}
     </update>
 
@@ -31,7 +31,7 @@
         select id, item_name, price, quantity
         from item
         <where>
-            <if test="itemName != null and itemName != ' '">
+            <if test="itemName != null and itemName != ''">
                 and item_name like concat ('%', #{itemName}, '%')
             </if>
             <if test="maxPrice != null">
