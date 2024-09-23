@@ -31,6 +31,11 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+	// add jdbc - contains JdbcTemplate
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	// add h2 database client lib
+	runtimeOnly 'com.h2database:h2'
+
 	//테스트에서 lombok 사용
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
