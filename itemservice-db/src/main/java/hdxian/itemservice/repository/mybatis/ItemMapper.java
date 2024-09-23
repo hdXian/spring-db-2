@@ -5,6 +5,7 @@ import hdxian.itemservice.repository.ItemSearchCond;
 import hdxian.itemservice.repository.ItemUpdateDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +20,7 @@ public interface ItemMapper {
 
     void update(@Param("id") Long id, @Param("updateParam") ItemUpdateDto updateParam);
 
+//    @Select("select item_name, price, quantity from item where id = #{id}") // 이거 쓰려면 xml에는 해당 부분이 없어야 함 (같이 있으면 충돌남)
     Optional<Item> findById(Long id);
 
     List<Item> findAll(ItemSearchCond cond);
