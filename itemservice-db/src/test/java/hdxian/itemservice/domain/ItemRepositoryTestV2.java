@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,6 +53,7 @@ class ItemRepositoryTestV2 {
 //        transactionManager.rollback(status);
     }
 
+//    @Commit // commit transaction after this test (other test will fail if enable this Annot.)
     @Test
     void save() {
         //given
