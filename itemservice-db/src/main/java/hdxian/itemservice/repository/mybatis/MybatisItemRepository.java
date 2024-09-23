@@ -5,17 +5,23 @@ import hdxian.itemservice.repository.ItemRepository;
 import hdxian.itemservice.repository.ItemSearchCond;
 import hdxian.itemservice.repository.ItemUpdateDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Repository
-@RequiredArgsConstructor
 public class MybatisItemRepository implements ItemRepository {
 
     // DI
     private final ItemMapper itemMapper;
+
+    public MybatisItemRepository(ItemMapper itemMapper) {
+        this.itemMapper = itemMapper;
+        log.info("[MybatisItemRepository] itemMapper={}", itemMapper.getClass());
+    }
 
     @Override
     public Item save(Item item) {
