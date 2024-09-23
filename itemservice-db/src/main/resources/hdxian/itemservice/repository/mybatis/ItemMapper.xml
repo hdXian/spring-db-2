@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper>
+
+<!--    인자가 Item item 하나: 프로퍼티에 item 생략 가능 (item.itemName -> itemName) -->
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        insert into item (item_name, price, quantity)
+        values (#{itemName}, #{price}, #{quantity})
+    </insert>
+
+<!--    인자가 Long id, ItemUpdateDto updateParam 2개: 각 인자를 구분해야 함 -->
+    <update id="update">
+        update item
+        set item_name = #{updateParam.itemName}
+        set price = #{updateParam.price}
+        set quantity = #{updateParam.quantity}
+        where id = #{id}
+    </update>
+
+<!--    인자가 Long id 한개: 인자 구분 필요 x. #{id} 그대로 명시 가능.-->
+    <select id="findById" resultType="Item"> <!-- hdxian.itemservice.domain.Item에서 패키지 경로 생략 가능 (.properties 설정) -->
+        select id, item_name, price, quantity
+        from item
+        where id = #{id}
+    </select>
+
+<!--    인자가 ItemSearchCond cond 하나: 프로퍼티에 cond 생략 가능 (cond.itemName -> itemName) -->
+    <select id="findAll" resultType="Item">
+        select id, item_name, price, quantity
+        from item
+        <where>
+            <if test="itemName != null and itemName != ' '">
+                and item_name like concat ('%', #{itemName}, '%')
+            </if>
+            <if test="maxPrice != null">
+                and price &lt;= #{maxPrice}
+            </if>
+        </where>
+    </select>
+
+</mapper>
