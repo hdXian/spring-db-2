@@ -32,12 +32,15 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
 	// add jdbc - contains JdbcTemplate
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+//	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	// add h2 database client lib
 	runtimeOnly 'com.h2database:h2'
 
 	// MyBatis
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+
+	// JPA, Spring data JPA (includes jdbc)
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
 	//테스트에서 lombok 사용
 	testCompileOnly 'org.projectlombok:lombok'
