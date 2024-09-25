@@ -65,7 +65,7 @@ public class JpaItemRepositoryV3 implements ItemRepository {
         String itemNameCond = cond.getItemName();
         Integer maxPriceCond = cond.getMaxPrice();
 
-        // 쿼리용 Item 객체 QItem
+        // 쿼리용 Item 객체 QItem -> QueryDsl을 적용한 이후 최소 한번 자바를 컴파일해야 함. (앱 실행, gradle task:complieJava 등)
         QItem item = QItem.item;
 
         BooleanBuilder builder = new BooleanBuilder();
