@@ -14,6 +14,12 @@ import org.springframework.util.StringUtils;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * V1 - use JPA
+ * EntityManager
+ * 스프링 통합에 의해 내부적으로 사용하는 DataSource, TransactionManager 등이 자동으로 설정됨.
+ */
+
 @Slf4j
 @Repository
 @Transactional // JPA executed in Transaction. (expect select)
