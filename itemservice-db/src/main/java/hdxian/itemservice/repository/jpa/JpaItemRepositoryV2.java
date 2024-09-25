@@ -12,6 +12,13 @@ import org.springframework.util.StringUtils;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * V2 - Spring Data JPA
+ * JpaRepository<T, ID> 인터페이스를 상속받은 SpringDataJpaItemRepository 인터페이스를 생성.
+ * Spring Data JPA가 기본 제공하는 메서드, 함수명 기반 쿼리 메서드, @Query 등을 실행할 jpql을 직접 지정하는 메서드 등을 인터페이스에 선언.
+ * 프록시 기술을 통해 인터페이스를 구현한 프록시 객체를 생성하고, 이를 이용해 데이터에 접근함.
+ */
+
 @RequiredArgsConstructor
 @Transactional
 @Repository
